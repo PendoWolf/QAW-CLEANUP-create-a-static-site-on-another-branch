@@ -9,6 +9,13 @@ if (newsletterForm) {
     document.getElementById("newsletter-status").textContent =
       `Thanks! Updates will go to ${email}.`;
     newsletterForm.reset();
+    // Pendo Track Event: a valid newsletter signup (built-in validation passed). No email (PII).
+    if (window.pendo && typeof window.pendo.track === "function") {
+      window.pendo.track("newsletter_subscribed", {
+        form_id: "newsletter-form",
+        source_page: location.pathname,
+      });
+    }
   });
 }
 
@@ -42,5 +49,12 @@ if (contactForm) {
     document.getElementById("contact-status").textContent =
       `Thanks, ${name}! We'll reply within a day.`;
     contactForm.reset();
+    // Pendo Track Event: a valid contact message was sent. No name or email (PII).
+    if (window.pendo && typeof window.pendo.track === "function") {
+      window.pendo.track("contact_message_submitted", {
+        form_id: "contact-form",
+        source_page: location.pathname,
+      });
+    }
   });
 }
