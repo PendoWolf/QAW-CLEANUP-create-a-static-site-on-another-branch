@@ -17,6 +17,12 @@ if (newsletterForm) {
     const email = document.getElementById("newsletter-email").value;
     document.getElementById("newsletter-status").textContent =
       `Thanks! Updates will go to ${email}.`;
+    // Track a valid newsletter sign-up (the submit event only fires after
+    // HTML5 validation passes). The email address is PII, so it is not sent.
+    pendo.track("newsletter_subscribed", {
+      form_id: "newsletter-form",
+      source_page: window.location.pathname,
+    });
     newsletterForm.reset();
   });
 }
@@ -50,6 +56,14 @@ if (contactForm) {
     const name = document.getElementById("contact-name").value;
     document.getElementById("contact-status").textContent =
       `Thanks, ${name}! We'll reply within a day.`;
+    // Track a completed contact request (the submit event only fires after
+    // HTML5 validation passes). Name, email and message text are PII, so only
+    // the message length is sent.
+    pendo.track("contact_message_sent", {
+      form_id: "contact-form",
+      message_length: document.getElementById("contact-message").value.length,
+      source_page: window.location.pathname,
+    });
     contactForm.reset();
   });
 }
