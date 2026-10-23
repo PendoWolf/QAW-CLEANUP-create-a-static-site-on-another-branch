@@ -1,6 +1,15 @@
 // Harbor Notes: the little behavior the static pages need, with no framework.
 // Every page loads this file; each block runs only on the page that has its elements.
 
+// Novus by Pendo: boot the SDK once per page load. The install snippet in each
+// page's <head> defines the `pendo` stub. An empty visitor id lets the SDK reuse
+// a known visitor from cookies/localStorage, or start a new anonymous one.
+pendo.initialize({
+  visitor: {
+    id: "",
+  },
+});
+
 const newsletterForm = document.getElementById("newsletter-form");
 if (newsletterForm) {
   newsletterForm.addEventListener("submit", (event) => {
