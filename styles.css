@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #1d2733;
+  background: #f6f8fa;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  border-bottom: 1px solid #d8dee4;
+}
+
+.site-header nav a {
+  margin-left: 1rem;
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  max-width: 48rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.hero {
+  padding: 2rem 0;
+}
+
+.button,
+button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 6px;
+  background: #0b6bcb;
+  color: #ffffff;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.plan {
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.site-footer {
+  padding: 2rem;
+  text-align: center;
+  color: #57606a;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.feature {
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+}
+
+.team {
+  padding-left: 1.25rem;
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 24rem;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  border: 1px solid #d8dee4;
+  border-radius: 6px;
+  font: inherit;
+}

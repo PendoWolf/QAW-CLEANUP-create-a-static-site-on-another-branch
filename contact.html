@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact - Harbor Notes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">Harbor Notes</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Contact us</h1>
+      <p>Questions about Harbor Notes? Send us a note.</p>
+      <form id="contact-form">
+        <label for="contact-name">Name</label>
+        <input id="contact-name" type="text" required />
+        <label for="contact-email">Email</label>
+        <input id="contact-email" type="email" required placeholder="you@example.com" />
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" rows="4" required></textarea>
+        <button type="submit">Send message</button>
+      </form>
+      <p id="contact-status" role="status"></p>
+    </main>
+
+    <footer class="site-footer">Harbor Notes, a static site.</footer>
+    <script src="app.js"></script>
+  </body>
+</html>
