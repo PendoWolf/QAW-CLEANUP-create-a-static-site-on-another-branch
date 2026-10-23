@@ -1,0 +1,42 @@
+# QA Wolf build check. On every pull request (GitHub runs it on the pull request merged into its base),
+# check every page's HTML structure: a plain static site has nothing to build, so this is its "still builds" check.
+# It fails on markup a botched edit leaves (a stray or unclosed tag, a second <head> or <title>, a duplicate
+# attribute or id), not on style. QA Wolf's flows assert this job's "qaw-build" check succeeded on each Novus pull request.
+name: qaw-build
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  qaw-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install html-validate (outside the repo)
+        run: npm install --prefix "$RUNNER_TEMP/html-validate" --no-save --no-audit --no-fund --legacy-peer-deps html-validate@10.17.0
+      - name: Check every page's HTML structure
+        run: |
+          cat > "$RUNNER_TEMP/htmlvalidate.json" <<'JSON'
+          {
+            "root": true,
+            "rules": {
+              "close-attr": "error",
+              "close-order": "error",
+              "element-name": "error",
+              "element-permitted-content": "error",
+              "element-permitted-occurrences": "error",
+              "element-permitted-order": "error",
+              "element-required-content": "error",
+              "missing-doctype": "error",
+              "no-dup-attr": "error",
+              "no-dup-id": "error",
+              "script-element": "error",
+              "void-content": "error"
+            }
+          }
+          JSON
+          git ls-files -z '*.html' | xargs -0 "$RUNNER_TEMP/html-validate/node_modules/.bin/html-validate" --config "$RUNNER_TEMP/htmlvalidate.json"
