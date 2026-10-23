@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Harbor Notes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">Harbor Notes</a>
+      <nav>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="pricing.html">Pricing</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Notes that stay where you left them</h1>
+        <p>Harbor Notes keeps your ideas in one calm, simple place.</p>
+        <a class="button" href="pricing.html" id="see-plans">See plans</a>
+      </section>
+
+      <section class="newsletter">
+        <h2>Get product updates</h2>
+        <form id="newsletter-form">
+          <label for="newsletter-email">Email</label>
+          <input id="newsletter-email" type="email" required placeholder="you@example.com" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p id="newsletter-status" role="status"></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">Harbor Notes, a static site.</footer>
+    <script src="app.js"></script>
+  </body>
+</html>
